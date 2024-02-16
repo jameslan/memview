@@ -3,10 +3,6 @@
   "displayName": "memview",
   "description": "",
   "version": "0.0.1",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:jameslan/memview.git"
-  },
   "engines": {
     "vscode": "^1.85.0"
   },
@@ -24,13 +20,20 @@
     ]
   },
   "scripts": {
-    "init": "mkdir -p out && opam switch create . 5.1.1 -y --deps-only",
     "vscode:prepublish": "npm run compile",
-    "compile": "opam exec -- dune build @melange && cp -f _build/default/src/extension/src/*.js out",
-    "pretest": "npm run compile"
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.86.0",
-    "@vscode/vsce": "^2.23.0"
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.85.0",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.8",
+    "@vscode/vsce": "^2.23.0",
+    "typescript": "^5.3.3"
   }
 }
