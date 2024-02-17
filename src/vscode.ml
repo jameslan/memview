@@ -1,13 +1,13 @@
-type disposableLike = <
-    dispose : unit -> unit
->
-type extensionContext = {
-  subscriptions : disposableLike array
-}
+type disposableLike = < dispose : unit -> unit >
+type extensionContext = { subscriptions : disposableLike array }
 
-type param
-external registerCommand : string -> ( unit -> unit ) -> disposableLike = "registerCommand"
+module Commands = struct
+  external registerCommand : string -> (unit -> unit) -> disposableLike
+    = "registerCommand"
   [@@mel.scope "commands"] [@@mel.module "vscode"]
+end
 
-external showInformationMessage : string -> unit = "showInformationMessage"
+module Window = struct
+  external showInformationMessage : string -> unit = "showInformationMessage"
   [@@mel.scope "window"] [@@mel.module "vscode"]
+end

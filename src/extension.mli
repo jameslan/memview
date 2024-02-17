@@ -1,3 +1,2 @@
-val activate: Vscode.extensionContext -> unit
-
-val deactivate: unit -> unit
+val activate : Vscode.extensionContext -> unit
+val deactivate : unit -> unit

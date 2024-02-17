@@ -1,3 +1,4 @@
 (melange.emit
-  (target extension)
-  (preprocess (pps melange.ppx)))
+ (target extension)
+ (preprocess
+  (pps melange.ppx)))
